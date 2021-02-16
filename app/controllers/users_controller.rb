@@ -1,3 +1,5 @@
+
+
 class UsersController < ApplicationController
 
     def show
@@ -6,18 +8,25 @@ class UsersController < ApplicationController
     end
 
 
+
+
+
     def create 
-        user = User.create(new_user_params)
+        user = User.create(user_params)
     end
     
-    def edit 
+    def update 
+        user = User.find(params[:id])
+        user.update(user_params)
+        user.remove_background
         
+        render json: user
     end
 
     private
 
-    def new_user_params
-     params.permit(:name)
+    def user_params
+     params.permit(:name, :profile_photo, :forground_photo)
     end
 
 end

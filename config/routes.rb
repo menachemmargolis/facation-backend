@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/locations/:location/:number', to: 'vacations#locations'
   
-  `https://api.unsplash.com/search/photos?client_id=key-used-to-be-here&query=${location}&page=1&per_page=3`
+  
 
   # resources :images
   # resources :vacations

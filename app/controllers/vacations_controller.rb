@@ -6,7 +6,12 @@ class VacationsController < ApplicationController
    
 
     def create
-        vacation = Vacation.create(new_vacation_params)
+        
+        vacation = Vacation.create(user_id: 1, location: new_vacation_params[:location])
+        new_vacation_params[:images].each{|image| vacation.images.create(url: image)}
+        
+        vacation.images.each{|image| image.composite_image}
+        render json: vacation
     end
 
     def locations 
@@ -24,6 +29,6 @@ class VacationsController < ApplicationController
       private
     
       def new_vacation_params
-        params.permit(:location, :user_id)
+        params.permit(:location, :user_id, :images => [])
       end
 end

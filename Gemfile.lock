@@ -153,6 +153,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rmagick (4.2.1)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -187,6 +188,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.1.1)
   rest-client
+  rmagick
   spring
   tzinfo-data
 

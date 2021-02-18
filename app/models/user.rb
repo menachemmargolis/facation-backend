@@ -5,7 +5,8 @@ require 'json'
 class User < ApplicationRecord
     has_many :vacations
     has_many :images, through: :vacations
-
+    validates :name, uniqueness: true
+    validates :name, presence: true
     def remove_background
 
         url = URI("https://background-removal.p.rapidapi.com/remove")

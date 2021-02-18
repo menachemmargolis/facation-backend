@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/locations/:location/:number', to: 'vacations#locations'
   
-  
+  get '/companions', to: 'companions#index'
 
   # resources :images
   # resources :vacations

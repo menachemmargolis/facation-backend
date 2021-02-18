@@ -3,10 +3,14 @@ class Image < ApplicationRecord
     include Magick
    def composite_image
     
-    # byebug
-    fg = ImageList.new(User.first.forground_photo)
+    
+    user = ImageList.new(User.first.forground_photo)
+    small_user = user.scale(0.75)
+    companion = ImageList.new(self.vacation.companion.image)
+    small_companion = companion.scale(0.75)
     bg = ImageList.new(self.url)
-    image = bg.composite(fg, SouthGravity, SrcOverCompositeOp)
+    image1 = bg.composite(small_companion, SouthEastGravity, SrcOverCompositeOp)
+    image = image1.composite(small_user, SouthWestGravity, SrcOverCompositeOp)
     image.write("Photos/#{self.id}.jpeg")
     self.update(url: File.expand_path("Photos/#{self.id}.jpeg"))
    end

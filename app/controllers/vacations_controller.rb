@@ -6,11 +6,11 @@ class VacationsController < ApplicationController
    
 
     def create
-        
-        vacation = Vacation.create(user_id: 1, companion_id: new_vacation_params[:companion], location: new_vacation_params[:location])
+        user = User.find_by(name: params[:name])
+        vacation = Vacation.create(user_id: user.id, companion_id: new_vacation_params[:companion], location: new_vacation_params[:location])
         new_vacation_params[:images].each{|image| vacation.images.create(url: image)}
         
-        vacation.images.each{|image| image.composite_image}
+        vacation.images.each{|image| image.composite_image(user)}
         render json: vacation
     end
 

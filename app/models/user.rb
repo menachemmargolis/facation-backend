@@ -20,6 +20,7 @@ class User < ApplicationRecord
         request["x-rapidapi-host"] = 'background-removal.p.rapidapi.com'
         request.body = "image_url=#{self.profile_photo}"
         response = http.request(request)
+        
         body = response.body
         parsed = JSON.parse(body)
         self.update(forground_photo: parsed['response']['image_url'])

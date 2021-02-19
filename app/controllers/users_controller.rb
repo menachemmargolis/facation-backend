@@ -10,7 +10,17 @@ class UsersController < ApplicationController
 
 
 
-
+   def vacations
+    user = User.find_by(name: params[:name])
+     vacation = user.vacations
+     render json:vacation
+   end
+   
+   def images
+    vacation = Vacation.find(params[:id])
+     img = vacation.images
+     render json: img
+   end
 
     def create 
         user = User.create(user_params)
@@ -18,7 +28,8 @@ class UsersController < ApplicationController
     end
     
     def update 
-        user = User.find(params[:id])
+
+        user = User.find_by(name: params[:name])
         user.update(user_params)
         user.remove_background
         

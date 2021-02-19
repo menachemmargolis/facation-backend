@@ -2,24 +2,21 @@ Rails.application.routes.draw do
 
   get '/users/:name', to: 'users#show'
   post '/users', to: 'users#create'
-  patch '/users/:id', to: 'users#update'
+  patch '/users/:name', to: 'users#update'
   delete '/users/:id', to: 'users#delete'
   
   
-  post '/images', to: 'images#create'
+  post '/images/:name', to: 'images#create'
   delete '/images/:id', to: 'images#delete'
 
   
-  post '/vacations', to: 'vacations#create'
+  post '/vacations/:name', to: 'vacations#create'
   delete '/vacations/:id', to: 'vacations#delete'
 
-
+  get '/vacations/:name', to: 'users#vacations'
   get '/locations/:location/:number', to: 'vacations#locations'
   
   get '/companions', to: 'companions#index'
+  get 'locations/:id', to: 'users#images'
 
-  # resources :images
-  # resources :vacations
-  # resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

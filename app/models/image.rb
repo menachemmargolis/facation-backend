@@ -1,10 +1,9 @@
 class Image < ApplicationRecord
     belongs_to :vacation
     include Magick
-   def composite_image
+   def composite_image(current_user)
     
-    
-    user = ImageList.new(User.first.forground_photo)
+    user = ImageList.new(current_user.forground_photo)
     small_user = user.scale(0.75)
     companion = ImageList.new(self.vacation.companion.image)
     small_companion = companion.scale(0.75)

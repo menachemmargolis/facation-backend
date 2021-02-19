@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
     
     def update 
-
+        
         user = User.find_by(name: params[:name])
         user.update(user_params)
         user.remove_background

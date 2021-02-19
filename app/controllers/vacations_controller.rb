@@ -11,6 +11,8 @@ class VacationsController < ApplicationController
         new_vacation_params[:images].each{|image| vacation.images.create(url: image)}
         
         vacation.images.each{|image| image.composite_image(user)}
+        vacation.create_video
+        
         render json: vacation
     end
 

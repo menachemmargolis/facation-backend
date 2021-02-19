@@ -54,7 +54,7 @@ transloadit = Transloadit.new(
   if !response.error?
     self.update(video: response.body["results"]['merged'][0]["url"]) 
   else
-    return response.body["error"]
+    puts response.body["error"]
   end
 
   
